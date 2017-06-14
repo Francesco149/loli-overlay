@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+<repo priority="50" status="unofficial">
+    <name>loli-overlay</name>
+    <description>lolisamurai's personal overlay</description>
+    <homepage>https://github.com/Francesco149/loli-overlay</homepage>
+    <owner>
+        <email>lolisamurai@tfwno.gf</email>
+        <name>Franc[e]sco / lolisamurai</name>
+    </owner>
+    <source type="git">git://github.com/Francesco149/loli-overlay.git</source>
+    <feed>https://github.com/Francesco149/loli-overlay/commits/master.atom</feed>
+</repo>
+</repositories>
