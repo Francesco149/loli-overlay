@@ -70,4 +70,4 @@ installed in your system and they won't be bundled with the app):
 ```
 
 Result:
-![](http://hnng.moe/f/RwY)
+![](http://hnng.moe/f/RwZ)
