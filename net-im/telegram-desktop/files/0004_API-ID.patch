@@ -1,0 +1,24 @@
+diff --git a/Telegram/SourceFiles/config.h b/Telegram/SourceFiles/config.h
+index 5d84a570..68838fd4 100644
+--- a/Telegram/SourceFiles/config.h
++++ b/Telegram/SourceFiles/config.h
+@@ -20,6 +20,8 @@ Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
+ */
+ #pragma once
+ 
++#include "../../config.h"
++
+ #include "core/version.h"
+ #include "settings.h"
+ 
+@@ -253,8 +255,8 @@ w/CVnbwQOw0g5GBwwFV3r0uTTvy44xx8XXxk+Qknu4eBCsmrAFNnAgMBAAE=\n\
+ #ifdef CUSTOM_API_ID
+ #include "../../../TelegramPrivate/custom_api_id.h" // Custom API id and API hash
+ #else
+-static const int32 ApiId = 17349;
+-static const char *ApiHash = "344583e45741c457fe1862106095a5eb";
++static const int32 ApiId   = TELEGRAM_API_ID;
++static const char *ApiHash = TELEGRAM_API_HASH;
+ #endif
+ 
+ #if Q_BYTE_ORDER == Q_BIG_ENDIAN

@@ -1,0 +1,45 @@
+diff --git a/Telegram/SourceFiles/app.cpp b/Telegram/SourceFiles/app.cpp
+index de24b3ed..0543bf34 100644
+--- a/Telegram/SourceFiles/app.cpp
++++ b/Telegram/SourceFiles/app.cpp
+@@ -20,6 +20,8 @@ Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
+ */
+ #include "app.h"
+ 
++#include "../../config.h"
++
+ #ifdef OS_MAC_OLD
+ #include <libexif/exif-data.h>
+ #endif // OS_MAC_OLD
+@@ -2269,6 +2271,7 @@ namespace {
+ 	void initMedia() {
+ 		if (!::monofont) {
+ 			QString family;
++			tryFontFamily(family, TELEGRAM_FT_MONOSPACE_OVERRIDE);
+ 			tryFontFamily(family, qsl("Consolas"));
+ 			tryFontFamily(family, qsl("Liberation Mono"));
+ 			tryFontFamily(family, qsl("Menlo"));
+diff --git a/Telegram/SourceFiles/ui/twidget.cpp b/Telegram/SourceFiles/ui/twidget.cpp
+index 04fad32b..54c9bb9d 100644
+--- a/Telegram/SourceFiles/ui/twidget.cpp
++++ b/Telegram/SourceFiles/ui/twidget.cpp
+@@ -21,6 +21,8 @@ Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
+ #include "application.h"
+ #include "mainwindow.h"
+ 
++#include "../../../config.h"
++
+ namespace Fonts {
+ namespace {
+ 
+@@ -70,8 +72,8 @@ bool LoadCustomFont(const QString &filePath, const QString &familyName, int flag
+ }
+ 
+ bool Started = false;
+-QString OpenSansOverride;
+-QString OpenSansSemiboldOverride;
++QString OpenSansOverride         = TELEGRAM_FT_OVERRIDE;
++QString OpenSansSemiboldOverride = TELEGRAM_FT_SEMIBOLD_OVERRIDE;
+ 
+ } // namespace
+ 
