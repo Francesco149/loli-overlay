@@ -42,6 +42,7 @@ What the patches do:
   horrible it doesn't work out of the box - some CMake files even
   ignore CXX flags and complain they want c++14.
 * Bypass gyp and builds everything with CMake.
+* Use system Qt instead of building telegram's custom Qt.
 
 Example ```/etc/portage/savedconfig/net-im/telegram-desktop-*```
 that overrides the fonts with pixel-perfect ones that work well
@@ -67,3 +68,6 @@ installed in your system and they won't be bundled with the app):
 #define TELEGRAM_FT_SEMIBOLD_OVERRIDE  qsl("Arial")
 #define TELEGRAM_FT_MONOSPACE_OVERRIDE qsl("Andale Mono")
 ```
+
+Result:
+![](http://hnng.moe/f/RwY)
