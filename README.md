@@ -14,6 +14,20 @@ sudo layman -S
 
 Now you are ready to install any package in this overlay.
 
+# sharenix
+My ShareX clone for linux. Comes pre-configured to upload images to imgur.
+Copy /etc/sharenix.json to ~/.sharenix.json and customize as needed.
+
+Run ```sharenix``` for help.
+
+Bind ```sharenix-window``` to a hotkey to screenshot and upload
+the currently focused window.
+
+Bind ```sharenix-section``` to a hotkey to screenhot and upload a region.
+
+See [sharenix's project page](https://github.com/Francesco149/sharenix) for
+more info.
+
 # telegram-desktop
 This is the [official telegram client](
 https://github.com/telegramdesktop/tdesktop) with a bunch of
@@ -38,9 +52,7 @@ What the patches do:
 * Override fonts and API Key through the savedconfig USE-flag and a
   config file. Who thought hardcoding the app to a single font and
   being so adamant about it was a good idea?
-* Allow the thing to even compile, because the build system is so
-  horrible it doesn't work out of the box - some CMake files even
-  ignore CXX flags and complain they want c++14.
+* Respect system-wide {C,CXX,LD}FLAGS (built successfully with -O3, lto and graphite)
 * Bypass gyp and builds everything with CMake.
 * Use system Qt instead of building telegram's custom Qt.
 
