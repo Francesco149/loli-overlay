@@ -27,7 +27,7 @@ fi
 
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
-IUSE="gtk3"
+IUSE="gtk3 pulseaudio"
 
 RDEPEND="
 	dev-libs/openssl:0
@@ -39,7 +39,6 @@ RDEPEND="
 	dev-qt/qtwidgets[png,xcb]
 	media-libs/openal
 	media-libs/opus
-	media-sound/pulseaudio
 	sys-libs/zlib[minizip]
 	virtual/ffmpeg
 	x11-libs/libdrm
@@ -52,6 +51,7 @@ RDEPEND="
 		dev-libs/libappindicator:3
 		dev-qt/qtgui:5[gtk(+)]
 	)
+	pulseaudio? ( media-sound/pulseaudio )
 "
 
 DEPEND="${RDEPEND}
@@ -122,6 +122,10 @@ EOF
 	git-r3_src_unpack
 	cmake-utils_src_prepare
 
+	pushd "${LIBTGVOIP_DIR}"
+	epatch "${FILESDIR}/patches/ThirdParty/libtgvoip-disable-pulseaudio.patch"
+	popd
+
 	mv "${S}"/lib/xdg/telegram{,-}desktop.desktop || \
 		die "Failed to fix .desktop-file name"
 }
@@ -136,6 +140,7 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
 		-DENABLE_CRASH_REPORTS=0
 		-DENABLE_GTK_INTEGRATION=$(usex gtk3)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 	)
 
 	cmake-utils_src_configure
