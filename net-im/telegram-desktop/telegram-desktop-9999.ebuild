@@ -32,7 +32,6 @@ IUSE=""
 RDEPEND="
 	dev-libs/libappindicator:3
 	dev-libs/openssl:0
-	dev-util/google-breakpad
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[gtk,jpeg,png,xcb]
 	dev-qt/qtnetwork
@@ -131,6 +130,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
+		-DENABLE_CRASH_REPORTS=0
 	)
 
 	cmake-utils_src_configure
