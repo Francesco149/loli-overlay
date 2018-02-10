@@ -27,13 +27,13 @@ fi
 
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
-IUSE=""
+IUSE="gtk3"
 
 RDEPEND="
-	dev-libs/libappindicator:3
 	dev-libs/openssl:0
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[gtk,jpeg,png,xcb]
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5[jpeg,png,xcb]
 	dev-qt/qtnetwork
 	dev-qt/qtimageformats
 	dev-qt/qtwidgets[png,xcb]
@@ -42,12 +42,16 @@ RDEPEND="
 	media-sound/pulseaudio
 	sys-libs/zlib[minizip]
 	virtual/ffmpeg
-	x11-libs/gtk+:3
 	x11-libs/libdrm
 	x11-libs/libva[X,drm]
 	x11-libs/libX11
 	!net-im/telegram
 	!net-im/telegram-desktop-bin
+	gtk3? (
+		x11-libs/gtk+:3
+		dev-libs/libappindicator:3
+		dev-qt/qtgui:5[gtk(+)]
+	)
 "
 
 DEPEND="${RDEPEND}
@@ -131,6 +135,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
 		-DENABLE_CRASH_REPORTS=0
+		-DENABLE_GTK_INTEGRATION=$(usex gtk3)
 	)
 
 	cmake-utils_src_configure
