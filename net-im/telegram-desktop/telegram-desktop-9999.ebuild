@@ -34,9 +34,9 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[jpeg,png,xcb]
-	dev-qt/qtnetwork
-	dev-qt/qtimageformats
-	dev-qt/qtwidgets[png,xcb]
+	dev-qt/qtnetwork:5
+	dev-qt/qtimageformats:5
+	dev-qt/qtwidgets:5[png,xcb]
 	media-libs/openal
 	media-libs/opus
 	sys-libs/zlib[minizip]
