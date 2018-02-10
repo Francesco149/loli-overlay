@@ -1,8 +1,8 @@
 diff --git a/Telegram/SourceFiles/app.cpp b/Telegram/SourceFiles/app.cpp
-index de24b3ed..0543bf34 100644
+index 45efcad4..30d38843 100644
 --- a/Telegram/SourceFiles/app.cpp
 +++ b/Telegram/SourceFiles/app.cpp
-@@ -20,6 +20,8 @@ Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
+@@ -7,6 +7,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  */
  #include "app.h"
  
@@ -11,7 +11,7 @@ index de24b3ed..0543bf34 100644
  #ifdef OS_MAC_OLD
  #include <libexif/exif-data.h>
  #endif // OS_MAC_OLD
-@@ -2269,6 +2271,7 @@ namespace {
+@@ -2092,6 +2094,7 @@ namespace {
  	void initMedia() {
  		if (!::monofont) {
  			QString family;
@@ -20,10 +20,10 @@ index de24b3ed..0543bf34 100644
  			tryFontFamily(family, qsl("Liberation Mono"));
  			tryFontFamily(family, qsl("Menlo"));
 diff --git a/Telegram/SourceFiles/ui/twidget.cpp b/Telegram/SourceFiles/ui/twidget.cpp
-index 04fad32b..54c9bb9d 100644
+index 1441ea47..63c51e92 100644
 --- a/Telegram/SourceFiles/ui/twidget.cpp
 +++ b/Telegram/SourceFiles/ui/twidget.cpp
-@@ -21,6 +21,8 @@ Copyright (c) 2014-2017 John Preston, https://desktop.telegram.org
+@@ -10,6 +10,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  #include "application.h"
  #include "mainwindow.h"
  
@@ -32,7 +32,7 @@ index 04fad32b..54c9bb9d 100644
  namespace Fonts {
  namespace {
  
-@@ -70,8 +72,8 @@ bool LoadCustomFont(const QString &filePath, const QString &familyName, int flag
+@@ -59,8 +61,8 @@ bool LoadCustomFont(const QString &filePath, const QString &familyName, int flag
  }
  
  bool Started = false;

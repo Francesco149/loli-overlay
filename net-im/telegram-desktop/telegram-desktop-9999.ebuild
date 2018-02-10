@@ -11,6 +11,12 @@ inherit savedconfig eutils gnome2-utils xdg cmake-utils \
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
 EGIT_REPO_URI="https://github.com/telegramdesktop/tdesktop.git"
+EGIT_SUBMODULES=(
+	Telegram/ThirdParty/crl
+	Telegram/ThirdParty/libtgvoip
+	Telegram/ThirdParty/variant
+	Telegram/ThirdParty/GSL
+)
 
 if [[ ${PV} == 9999 ]]; then
 	KEYWORDS=""
@@ -49,9 +55,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+CMAKE_MIN_VERSION="3.8"
 CMAKE_USE_DIR="${S}/Telegram"
 
-PATCHES=("${FILESDIR}")
+PATCHES=("${FILESDIR}/patches")
+
+pkg_pretend() {
+	if tc-is-gcc && ! version_is_at_least 7.0 "$(gcc-version)"; then
+		die "gcc >= 7.0 is required"
+	fi
+}
 
 src_prepare() {
 	default
@@ -79,20 +92,45 @@ EOF
 
 	restore_config config.h
 
+	local CMAKE_MODULES_DIR="${S}/Telegram/cmake"
+	local THIRD_PARTY_DIR="${S}/Telegram/ThirdParty"
+	local LIBTGVOIP_DIR="${THIRD_PARTY_DIR}/libtgvoip"
+
+	cp "${FILESDIR}/Telegram.cmake" "${S}/Telegram/CMakeLists.txt"
+	cp "${FILESDIR}/ThirdParty-crl.cmake" "${THIRD_PARTY_DIR}/crl/CMakeLists.txt"
+	cp "${FILESDIR}/ThirdParty-libtgvoip.cmake" "${LIBTGVOIP_DIR}/CMakeLists.txt"
+	cp "${FILESDIR}/ThirdParty-libtgvoip-webrtc.cmake" \
+		"${LIBTGVOIP_DIR}/webrtc_dsp/webrtc/CMakeLists.txt"
+
+	mkdir "${CMAKE_MODULES_DIR}" || die
+	cp "${FILESDIR}/FindBreakpad.cmake" "${CMAKE_MODULES_DIR}"
+	cp "${FILESDIR}/TelegramCodegen.cmake" "${CMAKE_MODULES_DIR}"
+	cp "${FILESDIR}/TelegramCodegenTools.cmake" "${CMAKE_MODULES_DIR}"
+	cp "${FILESDIR}/TelegramTests.cmake" "${CMAKE_MODULES_DIR}"
+
+	unset EGIT_COMMIT
+	unset EGIT_SUBMODULES
+	unset PATCHES
+
+	EGIT_REPO_URI="https://github.com/ericniebler/range-v3.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/range-v3"
+	EGIT_COMMIT_DATE=$(GIT_DIR=${S}/.git git show -s --format=%ct || die)
+
+	git-r3_src_unpack
+	cmake-utils_src_prepare
+
 	mv "${S}"/lib/xdg/telegram{,-}desktop.desktop || \
 		die "Failed to fix .desktop-file name"
 }
 
 src_configure() {
 	local mycxxflags=(
+		-isystem"${WORKDIR}/range-v3/include"
 		-DLIBDIR="$(get_libdir)"
 	)
 
 	local mycmakeargs=(
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
-		-DBREAKPAD_INCLUDE_DIR="/usr/include/breakpad"
-		-DBREAKPAD_LIBRARY_DIR=\
-			"/usr/$(get_libdir)/libbreakpad_client.a"
 	)
 
 	cmake-utils_src_configure
