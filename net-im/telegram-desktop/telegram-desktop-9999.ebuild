@@ -134,10 +134,12 @@ src_configure() {
 	local mycxxflags=(
 		-isystem"${WORKDIR}/range-v3/include"
 		-DLIBDIR="$(get_libdir)"
+		$CXXFLAGS
 	)
 
 	local mycmakeargs=(
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
+        -DCMAKE_EXE_LINKER_FLAGS:="${LDFLAGS}"
 		-DBUILD_TESTS=0
 		-DENABLE_CRASH_REPORTS=0
 		-DENABLE_GTK_INTEGRATION=$(usex gtk3)
