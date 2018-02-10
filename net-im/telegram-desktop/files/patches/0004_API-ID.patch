@@ -7,7 +7,8 @@ Description: id and hash for Telegram API
 diff --git a/Telegram/SourceFiles/config.h b/Telegram/SourceFiles/config.h
 --- a/Telegram/SourceFiles/config.h
 +++ b/Telegram/SourceFiles/config.h
-@@ -264,6 +264,9 @@ w/CVnbwQOw0g5GBwwFV3r0uTTvy44xx8XXxk+Qknu4eBCsmrAFNnAgMBAAE=\n\
+@@ -217,7 +217,10 @@ w/CVnbwQOw0g5GBwwFV3r0uTTvy44xx8XXxk+Qknu4eBCsmrAFNnAgMBAAE=\n\
+ ";
  
  #ifdef CUSTOM_API_ID
 -#include "../../../TelegramPrivate/custom_api_id.h" // Custom API id and API hash
