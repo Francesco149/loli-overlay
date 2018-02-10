@@ -138,6 +138,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_CXX_FLAGS:="${mycxxflags[*]}"
+		-DBUILD_TESTS=0
 		-DENABLE_CRASH_REPORTS=0
 		-DENABLE_GTK_INTEGRATION=$(usex gtk3)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
