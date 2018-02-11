@@ -19,5 +19,5 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-go/go-gtk-glib"
 RDEPEND="x11-libs/gdk-pixbuf"
+DEPEND="${RDEPEND} dev-go/go-gtk-glib"
