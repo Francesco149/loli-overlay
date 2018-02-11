@@ -19,9 +19,10 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
+RDEPEND="x11-libs/gtk+:2"
 DEPEND="
+	${RDEPEND}
 	dev-go/go-gtk-gdk
 	dev-go/go-gtk-gio
 	dev-go/go-pointer
 "
-RDEPEND="x11-libs/gtk+:2"
