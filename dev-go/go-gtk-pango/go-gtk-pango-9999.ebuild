@@ -19,5 +19,5 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-lang/go"
 RDEPEND="x11-libs/pango"
+DEPEND="${RDEPEND} dev-lang/go"
