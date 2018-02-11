@@ -19,8 +19,9 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
+RDEPEND="x11-libs/gtk+:2"
 DEPEND="
+	${RDEPEND}
 	dev-go/go-gtk-gdkpixbuf
 	dev-go/go-gtk-pango
 "
-RDEPEND="x11-libs/gtk+:2"
