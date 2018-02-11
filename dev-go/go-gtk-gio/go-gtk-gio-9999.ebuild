@@ -19,5 +19,5 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-go/go-gtk-glib"
 RDEPEND="dev-libs/glib"
+DEPEND="${RDEPEND} dev-go/go-gtk-glib"
