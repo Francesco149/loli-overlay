@@ -25,6 +25,49 @@ bind ```sharenix-section``` to a hotkey to screenshot and upload a region.
 see [sharenix's project page](https://github.com/Francesco149/sharenix) for
 more info.
 
+# shmupmametgm
+mame optimized for Tetris The Grandmaster 2 Plus, see the
+[project page](https://github.com/MaryHal/shmupmametgm)
+
+for TGM1, see xmame in the [mv overlay](https://github.com/vaeth/mv-overlay)
+
+by default it tries to get roms and other stuff from the PWD, you most likely
+want to create a mame.ini:
+
+```
+mkdir ~/.mame
+mametgm64 -showconfig > ~/.mame/mame.ini
+```
+
+and edit the various directories:
+
+```
+#
+# CORE SEARCH PATH OPTIONS
+#
+rompath                   $HOME/.mame/roms
+samplepath                $HOME/.mame/samples
+artpath                   $HOME/.mame/artwork
+ctrlrpath                 $HOME/.mame/ctrlr
+inipath                   $HOME/.mame;.;ini
+fontpath                  .
+cheatpath                 $HOME/.mame/cheat
+crosshairpath             $HOME/.mame/crosshair
+
+#
+# CORE OUTPUT DIRECTORY OPTIONS
+#
+cfg_directory             $HOME/.mame/cfg
+nvram_directory           $HOME/.mame/nvram
+memcard_directory         $HOME/.mame/memcard
+input_directory           $HOME/.mame/inp
+state_directory           $HOME/.mame/sta
+snapshot_directory        $HOME/.mame/snap
+diff_directory            $HOME/.mame/diff
+comment_directory         $HOME/.mame/comments
+```
+
+
 # telegram-desktop
 [official telegram client](https://github.com/telegramdesktop/tdesktop)
 with a bunch of patches mostly forked from [reagentoo](
