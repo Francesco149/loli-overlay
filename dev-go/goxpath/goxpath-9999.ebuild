@@ -30,7 +30,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-lang/go
 	dev-go/go-text
 	dev-go/go-net
 "

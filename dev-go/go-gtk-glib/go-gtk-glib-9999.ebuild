@@ -20,4 +20,4 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-libs/glib"
-DEPEND="${RDEPEND} dev-lang/go"
+DEPEND="${RDEPEND}"

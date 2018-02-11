@@ -28,5 +28,5 @@ fi
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-lang/go"
+DEPEND=""
 RDEPEND=""

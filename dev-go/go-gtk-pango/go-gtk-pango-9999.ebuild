@@ -20,4 +20,4 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="x11-libs/pango"
-DEPEND="${RDEPEND} dev-lang/go"
+DEPEND="${RDEPEND}"
