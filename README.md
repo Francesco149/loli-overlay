@@ -1,8 +1,7 @@
-Personal portage overlay that I use for tweaks.
+personal portage overlay
 
-# Adding the overlay
-Install and configure [layman](https://wiki.gentoo.org/wiki/Layman)
-if you don't have it already.
+# usage
+if you haven't already, install and configure [layman](https://wiki.gentoo.org/wiki/Layman)
 
 ```bash
 sudo layman -o https://raw.githubusercontent.com/\
@@ -12,54 +11,48 @@ Francesco149/loli-overlay/master/overlay.xml \
 sudo layman -S
 ```
 
-Now you are ready to install any package in this overlay.
-
 # sharenix
-My ShareX clone for linux. Comes pre-configured to upload images to imgur.
-Copy /etc/sharenix.json to ~/.sharenix.json and customize as needed.
+my sharex clone. comes pre-configured to upload images to imgur.
+copy /etc/sharenix.json to ~/.sharenix.json and customize as needed.
 
-Run ```sharenix``` for help.
+run ```sharenix``` for help.
 
-Bind ```sharenix-window``` to a hotkey to screenshot and upload
+bind ```sharenix-window``` to a hotkey to screenshot and upload
 the currently focused window.
 
-Bind ```sharenix-section``` to a hotkey to screenhot and upload a region.
+bind ```sharenix-section``` to a hotkey to screenshot and upload a region.
 
-See [sharenix's project page](https://github.com/Francesco149/sharenix) for
+see [sharenix's project page](https://github.com/Francesco149/sharenix) for
 more info.
 
 # telegram-desktop
-This is the [official telegram client](
-https://github.com/telegramdesktop/tdesktop) with a bunch of
-patches mostly forked from [reagentoo](
+[official telegram client](https://github.com/telegramdesktop/tdesktop)
+with a bunch of patches mostly forked from [reagentoo](
 https://data.gpo.zugaina.org/reagentoo/net-im/telegram-desktop/)
 with slight modifications.
 
-Install:
+install:
 
 ```bash
 sudo euse --enable savedconfig
 sudo emerge -a telegram-desktop
 ```
 
-Customize config file and recompile:
+customize config file and recompile:
 ```bash
 sudo nano /etc/portage/savedconfig/net-im/telegram-desktop-*
 sudo emerge telegram-desktop
 ```
 
-What the patches do:
-* Override fonts and API Key through the savedconfig USE-flag and a
-  config file. Who thought hardcoding the app to a single font and
-  being so adamant about it was a good idea?
-* Respect system-wide {C,CXX,LD}FLAGS (built successfully with -O3, lto and graphite)
-* Bypass gyp and builds everything with CMake.
-* Use system Qt instead of building telegram's custom Qt.
+what the patches do:
+* override fonts and api key through the savedconfig USE-flag and a
+  config file
+* respect system-wide {C,CXX,LD}FLAGS (built successfully with -O3, lto and graphite)
+* bypass gyp and builds everything with CMake
+* use system qt instead of building telegram's custom qt
 
-Example ```/etc/portage/savedconfig/net-im/telegram-desktop-*```
-that overrides the fonts with pixel-perfect ones that work well
-with no anti-aliasing (note that you need to have the fonts
-installed in your system and they won't be bundled with the app):
+example ```/etc/portage/savedconfig/net-im/telegram-desktop-*```
+with custom fonts
 
 ```cpp
 #pragma once
@@ -81,5 +74,5 @@ installed in your system and they won't be bundled with the app):
 #define TELEGRAM_FT_MONOSPACE_OVERRIDE qsl("Andale Mono")
 ```
 
-Result:
+result:
 ![](http://hnng.moe/f/RwZ)
