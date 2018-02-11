@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="mirror"
 
 DESCRIPTION="An XPath 1.0 implementation written in the Go programming language."
 HOMEPAGE="https://github.com/ChrisTrenkamp/goxpath"

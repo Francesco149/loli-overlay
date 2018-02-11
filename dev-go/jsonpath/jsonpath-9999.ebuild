@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="mirror"
 
 DESCRIPTION="OpenSource JSON-Path"
 HOMEPAGE="https://github.com/NodePrime/jsonpath"

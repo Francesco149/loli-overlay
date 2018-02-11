@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="mirror"
 
 DESCRIPTION="Extract URLs from text"
 HOMEPAGE="https://github.com/mvdan/xurls"

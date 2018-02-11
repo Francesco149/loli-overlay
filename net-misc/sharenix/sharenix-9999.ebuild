@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="mirror"
 
 DESCRIPTION="ShareX clone for linux"
 HOMEPAGE="https://github.com/Francesco149/sharenix"
