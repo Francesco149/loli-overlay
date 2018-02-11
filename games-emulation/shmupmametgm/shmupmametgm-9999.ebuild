@@ -29,9 +29,7 @@ REQUIRED_USE="
 # TODO: patch gtk/gnome dependencies as they should only be needed
 # for the debugger but the makefile hardcodes the ldflags
 
-DEPEND="virtual/pkgconfig"
 RDEPEND="
-	${DEPEND}
 	!bundled-libs? ( dev-libs/expat sys-libs/zlib )
 	opengl? ( virtual/opengl )
 	sdl? ( >=media-libs/libsdl-1.2.0[joystick,opengl?,sound,video,X] )
@@ -40,6 +38,7 @@ RDEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	gnome? ( gnome-base/gconf:2 )
 "
+DEPEND="${RDEPEND} virtual/pkgconfig"
 
 # utils to toggle options in the makefile
 
