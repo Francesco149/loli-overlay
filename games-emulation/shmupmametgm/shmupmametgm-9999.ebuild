@@ -4,8 +4,6 @@
 EAPI=6
 RESTRICT="mirror"
 
-inherit flag-o-matic toolchain-funcs
-
 DESCRIPTION="Customized MAME for the TGM series. Forked for extra output options and tooling."
 HOMEPAGE="https://github.com/MaryHal/shmupmametgm"
 LICENSE="GPL-2+ BSD-2 MIT CC0-1.0"
