@@ -67,6 +67,11 @@ diff_directory            $HOME/.mame/diff
 comment_directory         $HOME/.mame/comments
 ```
 
+# www-misc/profile-sync-daemon
+modified version of profile-sync-daemon, frozen to the last version that
+supported openrc with backported patches such as qutebrowser support
+
+feel free to pull request whatever extra patches you need on top
 
 # telegram-desktop
 [official telegram client](https://github.com/telegramdesktop/tdesktop)
