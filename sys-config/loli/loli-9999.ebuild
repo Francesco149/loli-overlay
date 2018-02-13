@@ -125,7 +125,7 @@ pkg_preinst() {
 	einfo
 	einfo "--------------------------------------------------------------------"
 	einfo "misc application configs"
-	install_sym "/usr/local/etc/mpv.conf"
+	install_sym "/etc/mpv/mpv.conf"
 
 	filelist="
 		gitconfig
