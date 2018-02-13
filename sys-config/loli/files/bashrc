@@ -13,5 +13,6 @@ alias sdispatch-conf='sudo dispatch-conf'
 alias svim='sudo vim'
 alias semerge='sudo emerge'
 alias rtorrent='rtorrent -n -o import=/etc/rtorrent.rc'
+alias sxiv='sxiv -r -t'
 
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
