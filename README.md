@@ -73,6 +73,10 @@ supported openrc with backported patches such as qutebrowser support
 
 feel free to pull request whatever extra patches you need on top
 
+# media-fonts/2xprotamsyn
+personal terminal and programming font. it's ProFont 2x upscaled with a few
+glyphs from tamsyn
+
 # telegram-desktop
 [official telegram client](https://github.com/telegramdesktop/tdesktop)
 with a bunch of patches mostly forked from [reagentoo](
