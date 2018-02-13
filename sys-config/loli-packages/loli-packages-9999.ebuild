@@ -58,6 +58,7 @@ DEPEND="
 	media-gfx/gimp
 	media-gfx/imagemagick
 	media-gfx/scrot
+	=media-gfx/sxiv-9999
 	media-fonts/noto
 	media-fonts/noto-cjk
 	media-fonts/font-misc-misc
