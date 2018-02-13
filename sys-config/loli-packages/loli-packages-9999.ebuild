@@ -60,6 +60,7 @@ DEPEND="
 	media-gfx/scrot
 	=media-gfx/sxiv-9999
 	media-gfx/exiv2
+	media-gfx/iptckwed
 	media-fonts/noto
 	media-fonts/noto-cjk
 	media-fonts/font-misc-misc
