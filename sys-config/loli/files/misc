@@ -1,5 +1,5 @@
 app-crypt/pinentry -gtk -qt5
-dev-vcs/git -tk -gnome-keyring -emacs -perl -python
+dev-vcs/git -tk -gnome-keyring -emacs -python
 media-libs/mesa vulkan
 dev-lang/python pgo sqlite
 sys-devel/gcc graphite pgo
