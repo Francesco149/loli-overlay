@@ -51,6 +51,7 @@ DEPEND="
 	games-emulation/xmame
 	=games-emulation/shmupmametgm-9999
 	=net-misc/streamlink-9999
+	=net-misc/youtube-dl-99999999
 	media-video/mpv
 	net-im/telegram-desktop
 	media-gfx/fbgrab
