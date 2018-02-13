@@ -1,0 +1,33 @@
+diff --git a/common/profile-sync-daemon.in b/common/profile-sync-daemon.in
+index 64c511c..64574be 100644
+--- a/common/profile-sync-daemon.in
++++ b/common/profile-sync-daemon.in
+@@ -55,6 +55,7 @@ opera-next
+ otter-browser
+ palemoon
+ qupzilla
++qutebrowser
+ rekonq
+ seamonkey
+ vivaldi
+@@ -226,6 +227,9 @@ config_check() {
+ 			qupzilla)
+ 				return
+ 				;;
++			qutebrowser)
++				return
++				;;
+ 			otter-browser)
+ 				return
+ 				;;
+@@ -409,6 +413,10 @@ set_which() {
+ 				DIRArr[0]="$homedir/.config/$browser"
+ 			PSNAME="$browser"
+ 			;;
++		qutebrowser)
++			DIRArr[0]="$homedir/.local/share/$browser"
++			PSNAME="$browser"
++			;;
+ 		rekonq)
+ 			[[ -d $homedir/.kde4/share/apps/$browser ]] &&
+ 				DIRArr[0]="$homedir/.kde4/share/apps/$browser"
