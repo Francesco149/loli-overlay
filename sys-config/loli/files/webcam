@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mpv --autofit 30% --geometry=2810:780 av://v4l2:${1-/dev/video0}

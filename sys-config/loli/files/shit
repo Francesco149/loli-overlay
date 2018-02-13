@@ -1,0 +1,73 @@
+# .shit v1.0.0
+# collection of shell utilities
+
+[ "x$SHIT_SOURCED" != "x" ] && return
+SHIT_SOURCED=1
+
+errcho() { (>&2 echo ${@}) }
+
+addpaths() {
+    local d
+    for d in "${@}"; do
+        [ -e "${d}" ] && export PATH="${PATH}:${d}"
+    done
+}
+
+stfu() {
+    "${@}" 2>&1 > /dev/null
+    return ${?}
+}
+
+if stfu pushd /tmp; then
+    stfu popd
+else
+    export SHIT_PUSHD_STACK=""
+
+    pushd() {
+        [ "x${1}" = "x" ] && return 1
+        export SHIT_PUSHD_STACK="${SHIT_PUSHD_STACK}:${PWD}"
+        cd "${1}"
+    }
+
+    popd() {
+        [ "x${SHIT_PUSHD_STACK}" = "x" ] && return 1
+        [ "x${SHIT_PUSHD_STACK}" = "x:" ] && return 1
+        cd "${SHIT_PUSHD_STACK##*:}"
+        export SHIT_PUSHD_STACK="${SHIT_PUSHD_STACK%:*}"
+    }
+fi
+
+doin() {
+    local result
+    stfu pushd ${1}
+    shift
+    "${@}"
+    result=$?
+    stfu popd
+    return $result
+}
+
+# run a command and convert newline-separated output to quoted arguments
+toargs() {
+    "${@}" | xargs -I '{}' printf '"{}" '
+}
+
+# print the nth most recently modified file(s) in the current directory
+#
+# $ recent
+# newest_file
+#
+# $ recent 1 3 4
+# latest_file
+# 3rd_latest_file
+# 4th_latest_file
+#
+recent() {
+    local sedexp
+    for n in "${@}"; do
+        sedexp="${sedexp}${n}p;"
+    done
+    ls -1At | sed -n "${sedexp-1p;}"
+}
+
+# vim: set syntax=sh :

@@ -1,0 +1,24 @@
+xset s off -dpms
+
+# TODO: find a way to detect when fonts aren't detected
+#       (xlsfonts fails without a X display)
+localfnt="${HOME}/.local/share/fonts/"
+mkfontdir "${localfnt}"
+fntdirs="
+    ${localfnt}
+    /usr/share/fonts/terminus
+    /usr/share/fonts/2xprotamsyn
+"
+for fntdir in $fntdirs; do
+    xset +fp $fntdir
+done
+xset fp rehash
+
+xrandr --output DVI-D-1 --primary
+
+killall clipmenud
+clipmenud &
+
+exec dwm
+
+# vim: set syntax=sh :

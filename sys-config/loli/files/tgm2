@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mametgm64 -inipath /usr/share/games/xmame tgm2p

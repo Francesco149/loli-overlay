@@ -1,0 +1,162 @@
+/* appearance */
+#define DWM_FONT "Misc Fixed:pixelsize=10:antialias=false:hinting=false"
+char *fonts[] = { DWM_FONT };
+char dmenufont[] = DWM_FONT;
+char clipmenufont[] = "Noto:size=14";
+
+char normbordercolor[] = "#000000";
+char normbgcolor[]     = "#000000";
+char normfgcolor[]     = "#ffffff";
+char selbordercolor[]  = "#cd00cd";
+char selbgcolor[]      = "#000000";
+char selfgcolor[]      = "#cd00cd";
+
+unsigned int borderpx  = 2;  /* border pixel of windows */
+unsigned int snap      = 32; /* snap pixel */
+int showbar            = 1;  /* 0 means no bar */
+int topbar             = 1;  /* 0 means bottom bar */
+
+/* tagging */
+char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+Rule rules[] = {
+    /* xprop(1):
+     *  WM_CLASS(STRING) = instance, class
+     *  WM_NAME(STRING) = title
+     */
+
+    /* class                instance  title   tags  flt  monitor */
+    { "Gimp",               0,        0,      0,    1,   -1 },
+    { "stalonetray",        0,        0,      0,    1,   -1 },
+    { "xmame",              0,        0,      0,    1,   -1 },
+    { "xmame.SDL",          0,        0,      0,    1,   -1 },
+    { "mametgm64",          0,        0,      0,    1,   -1 },
+    { "mpv",                0,        0,      0,    1,   -1 },
+    { "mplayer",            0,        0,      0,    1,   -1 },
+    { "qemu-system-x86_64", 0,        0,      0,    1,   -1 },
+};
+
+/* layout(s) */
+float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+int nmaster     = 1;    /* number of clients in master area */
+int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+
+Layout layouts[] = {
+    /* symbol     arrange function */
+    { "[]=",      tile }, /* first entry is default */
+    { "><>",      0 },    /* no layout function means floating behavior */
+    { "[M]",      monocle },
+};
+
+/* key definitions */
+#define C ControlMask
+#define S ShiftMask
+
+#define MODKEY Mod1Mask
+#define TAGKEYS(KEY,TAG) \
+    { MODKEY,     KEY, view,       {.ui = 1 << TAG} }, \
+    { MODKEY|C,   KEY, toggleview, {.ui = 1 << TAG} }, \
+    { MODKEY|S,   KEY, tag,        {.ui = 1 << TAG} }, \
+    { MODKEY|C|S, KEY, toggletag,  {.ui = 1 << TAG} },
+
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+#define SHCMD(cmd) { .v = (char*[]){ "/bin/sh", "-c", cmd, 0 } }
+
+/* commands */
+char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+char scratchpadname[] = "scratchpad";
+
+char* dmenucmd[] = {
+    "dmenu_run",
+    "-fn", dmenufont,
+    "-m", dmenumon,
+    "-nb", normbgcolor,
+    "-nf", normfgcolor,
+    "-sb", selbgcolor,
+    "-sf", selfgcolor,
+    0
+};
+
+char* clipmenucmd[] = {
+    "clipmenu",
+    "-fn", clipmenufont,
+    "-m", dmenumon,
+    "-nb", "#0d0d0d",
+    "-nf", "#ffffff",
+    "-sb", "#0d0d0d",
+    "-sf", "#ff90ff",
+    0
+};
+
+char*       termcmd[] = { "st", "-e", "tmux", 0 };
+char* scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", 0 };
+char*  sharenix2cmd[] = { "sharenix", "-n", "-c", "-m=fs", 0 };
+char*  sharenix3cmd[] = { "sharenix-window", 0 };
+char*  sharenix4cmd[] = { "sharenix-section", 0 };
+char*  sharenix5cmd[] = { "sharenix", "-n", "-c", "-m=c", 0 };
+
+Key keys[] = {
+    /* modifier   key        function        argument */
+    { MODKEY,     XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY,     XK_o,      spawn,          {.v = clipmenucmd } },
+    { MODKEY|S,   XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY,     XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+    { C|S,        XK_2,      spawn,          {.v = sharenix2cmd } },
+    { C|S,        XK_3,      spawn,          {.v = sharenix3cmd } },
+    { C|S,        XK_4,      spawn,          {.v = sharenix4cmd } },
+    { C|S,        XK_5,      spawn,          {.v = sharenix5cmd } },
+    { MODKEY,     XK_b,      togglebar,      {0} },
+    { MODKEY,     XK_j,      focusstack,     {.i = +1 } },
+    { MODKEY,     XK_k,      focusstack,     {.i = -1 } },
+    { MODKEY,     XK_i,      incnmaster,     {.i = +1 } },
+    { MODKEY,     XK_d,      incnmaster,     {.i = -1 } },
+    { MODKEY,     XK_h,      setmfact,       {.f = -0.05} },
+    { MODKEY,     XK_l,      setmfact,       {.f = +0.05} },
+    { MODKEY,     XK_Return, zoom,           {0} },
+    { MODKEY,     XK_Tab,    view,           {0} },
+    { MODKEY|S,   XK_c,      killclient,     {0} },
+    { MODKEY,     XK_t,      setlayout,      {.v = &layouts[0]} },
+    { MODKEY,     XK_f,      setlayout,      {.v = &layouts[1]} },
+    { MODKEY,     XK_m,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY,     XK_space,  setlayout,      {0} },
+    { MODKEY|S,   XK_space,  togglefloating, {0} },
+    { MODKEY,     XK_0,      view,           {.ui = ~0 } },
+    { MODKEY|S,   XK_0,      tag,            {.ui = ~0 } },
+    { MODKEY,     XK_comma,  focusmon,       {.i = -1 } },
+    { MODKEY,     XK_period, focusmon,       {.i = +1 } },
+    { MODKEY|S,   XK_comma,  tagmon,         {.i = -1 } },
+    { MODKEY|S,   XK_period, tagmon,         {.i = +1 } },
+    TAGKEYS(      XK_1,                      0)
+    TAGKEYS(      XK_2,                      1)
+    TAGKEYS(      XK_3,                      2)
+    TAGKEYS(      XK_4,                      3)
+    TAGKEYS(      XK_5,                      4)
+    TAGKEYS(      XK_6,                      5)
+    TAGKEYS(      XK_7,                      6)
+    TAGKEYS(      XK_8,                      7)
+    TAGKEYS(      XK_9,                      8)
+};
+
+/* button definitions
+ * click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin,
+ * or ClkRootWin
+ */
+Button buttons[] = {
+    /* click        event mask button   function        argument */
+    { ClkLtSymbol,  0,         Button1, setlayout,      {0} },
+    { ClkLtSymbol,  0,         Button3, setlayout,      {.v = &layouts[2]} },
+    { ClkWinTitle,  0,         Button2, zoom,           {0} },
+    { ClkStatusText,0,         Button2, spawn,          {.v = termcmd } },
+    { ClkClientWin, MODKEY,    Button1, movemouse,      {0} },
+    { ClkClientWin, MODKEY,    Button2, togglefloating, {0} },
+    { ClkClientWin, MODKEY,    Button3, resizemouse,    {0} },
+    { ClkTagBar,    0,         Button1, view,           {0} },
+    { ClkTagBar,    0,         Button3, toggleview,     {0} },
+    { ClkTagBar,    MODKEY,    Button1, tag,            {0} },
+    { ClkTagBar,    MODKEY,    Button3, toggletag,      {0} },
+};
+
+#undef C
+#undef S
+
+/* vim: set syntax=c : */

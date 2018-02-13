@@ -1,0 +1,14 @@
+app-crypt/pinentry -gtk -qt5
+dev-vcs/git -tk -gnome-keyring -emacs -perl -python
+media-libs/mesa vulkan
+dev-lang/python pgo sqlite
+sys-devel/gcc graphite pgo
+sys-apps/busybox static -make-symlinks
+x11-wm/dwm savedconfig
+x11-terms/st savedconfig
+dev-python/PyQt5 bluetooth dbus declarative gui network opengl printsupport sql
+dev-python/PyQt5 svg webengine widgets webchannel
+app-i18n/mozc ibus
+games-emulation/shmupmametgm gtk gnome
+media-video/ffmpeg x265 webp mp3 vpx
+app-emulation/qemu virgl

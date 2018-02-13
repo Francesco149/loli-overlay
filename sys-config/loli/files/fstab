@@ -1,0 +1,6 @@
+UUID=a01cbd96-8e4e-4997-9527-5404ac229fe8 /boot       ext2 defaults 0 2
+UUID=c4f1872a-f516-4880-ab76-591f96b135e1 /           ext4 noatime  0 1
+UUID=ee259b21-712d-4e9b-a7b1-1002f3f97dea /mnt/ubongo ext4 noatime  0 3
+UUID=9f66e2be-a232-4415-82fd-3fb521700dc7 /mnt/bak    ext4 noatime  0 3
+
+tmpfs /tmp tmpfs size=32G,noatime 0 0

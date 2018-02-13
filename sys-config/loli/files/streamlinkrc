@@ -1,0 +1,6 @@
+player=mpv
+#player-passthrough=https,hls,rtmp
+hls-segment-threads=3
+hds-segment-threads=3
+stream-segment-threads=3
+#http-no-ssl-verify

@@ -1,0 +1,17 @@
+case "$-" in "*i*") return ;; esac # non-interactive
+
+. "/etc/bash/shit"
+
+alias realpath='busybox realpath'
+alias ls='busybox ls'
+alias sed='busybox sed'
+alias xargs='busybox xargs'
+alias realpath='busybox realpath'
+alias rm='busybox rm'
+
+alias sdispatch-conf='sudo dispatch-conf'
+alias svim='sudo vim'
+alias semerge='sudo emerge'
+alias rtorrent='rtorrent -n -o import=/etc/rtorrent.rc'
+
+addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
