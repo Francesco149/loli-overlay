@@ -119,3 +119,21 @@ with custom fonts
 
 result:
 ![](http://hnng.moe/f/RwZ)
+
+# sys-config/loli
+my personal gentoo config and misc utils
+
+NOTE: don't actually install this from my overlay, fork it and edit it with your
+own hardware config. it will almost surely break your system unless you have
+my exact same machine
+
+```
+su -
+emerge -a app-portage/layman
+layman -a lto-overlay
+layman -a mv
+emerge -a sys-config/loli
+binutils-config --linker ld.gold
+emerge gcc
+emerge -e @world
+```
