@@ -1,7 +1,8 @@
 personal portage overlay
 
 # usage
-if you haven't already, install and configure [layman](https://wiki.gentoo.org/wiki/Layman)
+if you haven't already, install and configure
+[layman](https://wiki.gentoo.org/wiki/Layman)
 
 ```bash
 sudo layman -o https://raw.githubusercontent.com/\
@@ -99,7 +100,8 @@ sudo emerge telegram-desktop
 what the patches do:
 * override fonts and api key through the savedconfig USE-flag and a
   config file
-* respect system-wide {C,CXX,LD}FLAGS (built successfully with -O3, lto and graphite)
+* respect system-wide {C,CXX,LD}FLAGS (built successfully with -O3, lto andi
+  graphite)
 * bypass gyp and builds everything with CMake
 * use system qt instead of building telegram's custom qt
 
