@@ -85,4 +85,4 @@ autoname() {
     echo "${name}"
 }
 
-# vim: set syntax=sh :
+# vim: set syntax=sh expandtab softtabstop=0 listchars=tab\:>~,nbsp\:_,trail\:. list :

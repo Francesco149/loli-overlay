@@ -3,20 +3,20 @@ case "$-" in "*i*") return ;; esac # non-interactive
 . "/etc/bash/shit"
 
 BUSYBOX_CMDS="
-	realpath
-	ls
-	sed
-	xargs
-	basename
-	rm
-	date
-	sort
-	cut
-	time
-	expr
+    realpath
+    ls
+    sed
+    xargs
+    basename
+    rm
+    date
+    sort
+    cut
+    time
+    expr
 "
 for cmd in ${BUSYBOX_CMDS}; do
-	alias ${cmd}="busybox ${cmd}"
+    alias ${cmd}="busybox ${cmd}"
 done
 
 alias sdispatch-conf='sudo dispatch-conf'
@@ -28,64 +28,66 @@ alias sxiv='sxiv -r -t'
 # ------------------------------------------------------------------------------
 
 ehistory() {
-	eix '-I*' --format '<installedversions:DATESORT>' | sort -nr | cut -f2-3
+    eix '-I*' --format '<installedversions:DATESORT>' | sort -nr | cut -f2-3
 }
 
 viebuild() {
-	local ebuilddir
-	ebuilddir="$(eix "${@}" | eixpaths | peco)"
-	[ $? -eq 0 ] || return $?
-	vim "${ebuilddir}"
+    local ebuilddir
+    ebuilddir="$(eix "${@}" | eixpaths | peco)"
+    [ $? -eq 0 ] || return $?
+    vim "${ebuilddir}"
 }
 
 ffrectsel() {
-	local rect size w h coords
-	rect="$(xrectsel)"						     # wxh+x+y
-	size="$(echo ${rect} | cut -d'+' -f1)"	     # wxh
-	w="$(echo ${size} | cut -d'x' -f1)"		     # w
-	h="$(echo ${size} | cut -d'x' -f2)"		     # h
-	w="$(expr "${w}" / 2 \* 2)"				     # round w h to multiples of 2
-	h="$(expr "${h}" / 2 \* 2)"
-	coords=$(echo $rect | cut -d'+' -f2- | sed s/\+/,/g) # x,y
-	echo "-s ${w}x${h} -i :0.0+${coords}"
+    local rect size w h coords
+    rect="$(xrectsel)"                           # wxh+x+y
+    size="$(echo ${rect} | cut -d'+' -f1)"       # wxh
+    w="$(echo ${size} | cut -d'x' -f1)"          # w
+    h="$(echo ${size} | cut -d'x' -f2)"          # h
+    w="$(expr "${w}" / 2 \* 2)"                  # round w h to multiples of 2
+    h="$(expr "${h}" / 2 \* 2)"
+    coords=$(echo $rect | cut -d'+' -f2- | sed s/\+/,/g) # x,y
+    echo "-s ${w}x${h} -i :0.0+${coords}"
 }
 
 cast() {
-	ffmpeg \
-		-f x11grab \
-		-thread_queue_size 512 \
-		"${@}" \
-		-c:v libx264 -r 60 \
-		-vf ${CAST_VF-null} \
-		-preset ${CAST_PRESET-veryfast} \
-		-tune ${CAST_TUNE-zerolatency} \
-		-pix_fmt ${CAST_PIXFMT-yuv420p} \
-		-crf ${CAST_CRF-31} \
-		-movflags ${CAST_MOVFLAGS-+faststart} \
-		${CAST_TAILPARAMS} \
-		"$(autoname).mp4"
+    ffmpeg \
+        -f x11grab \
+        -thread_queue_size 512 \
+        "${@}" \
+        -c:v libx264 -r 60 \
+        -vf ${CAST_VF-null} \
+        -preset ${CAST_PRESET-veryfast} \
+        -tune ${CAST_TUNE-zerolatency} \
+        -pix_fmt ${CAST_PIXFMT-yuv420p} \
+        -crf ${CAST_CRF-31} \
+        -movflags ${CAST_MOVFLAGS-+faststart} \
+        ${CAST_TAILPARAMS} \
+        "$(autoname).mp4"
 }
 
 ucast() {
-	ffmpeg \
-		-f x11grab \
-		-thread_queue_size 512 \
-		"${@}" \
-		-c:v libx264rgb -qp 0 -r 60 \
-		-preset ${CAST_PRESET-ultrafast} \
-		${CAST_TAILPARAMS} \
-		"$(autoname).mp4"
+    ffmpeg \
+        -f x11grab \
+        -thread_queue_size 512 \
+        "${@}" \
+        -c:v libx264rgb -qp 0 -r 60 \
+        -preset ${CAST_PRESET-ultrafast} \
+        ${CAST_TAILPARAMS} \
+        "$(autoname).mp4"
 }
 
 ffrectsel_eval='$(ffrectsel)'
 
 for cmd in cast ucast; do
-	alias f${cmd}="CAST_VF='scale=1280:720' ${cmd} -s 1920x1080 -i :0.0+1280,0"
-	alias s${cmd}="${cmd} $ffrectsel_eval"
-	alias af${cmd}="f${cmd} -f alsa -i loopout"
-	alias as${cmd}="s${cmd} -f alsa -i loopout"
+    alias f${cmd}="CAST_VF='scale=1280:720' ${cmd} -s 1920x1080 -i :0.0+1280,0"
+    alias s${cmd}="${cmd} $ffrectsel_eval"
+    alias af${cmd}="f${cmd} -f alsa -i loopout"
+    alias as${cmd}="s${cmd} -f alsa -i loopout"
 done
 
 # ------------------------------------------------------------------------------
 
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
+
+# vim: set expandtab softtabstop=0 listchars=tab\:>~,nbsp\:_,trail\:. list :
