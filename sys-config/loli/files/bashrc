@@ -13,6 +13,7 @@ BUSYBOX_CMDS="
 	sort
 	cut
 	time
+	expr
 "
 for cmd in ${BUSYBOX_CMDS}; do
 	alias ${cmd}="busybox ${cmd}"
