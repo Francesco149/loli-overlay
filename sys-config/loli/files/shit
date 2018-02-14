@@ -1,4 +1,4 @@
-# .shit v1.1.0
+# .shit v1.1.1
 # collection of shell utilities
 
 [ "x$SHIT_SOURCED" != "x" ] && return
@@ -14,7 +14,7 @@ addpaths() {
 }
 
 stfu() {
-    "${@}" 2>&1 > /dev/null
+    "${@}" > /dev/null 2>&1
     return ${?}
 }
 
