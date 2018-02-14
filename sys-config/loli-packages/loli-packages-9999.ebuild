@@ -33,6 +33,7 @@ DEPEND="
 	app-misc/ranger
 	app-misc/tmux
 	net-p2p/rtorrent
+	app-shells/peco
 	dev-python/m2crypto
 	dev-python/pip
 	dev-python/requests
