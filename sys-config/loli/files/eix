@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [[ -e /tmp/eix-portage.eix ]]; then
+    cp -a /tmp/eix-portage.eix /var/cache/eix/previous.eix;
+fi
+
+eix-remote update
+eix-update
+
+if [[ -e /var/cache/eix/previous.eix ]]; then
+    eix-diff;
+fi
+
+# vim: set syntax=sh :

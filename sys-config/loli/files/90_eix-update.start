@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# since I moved the eix cache to tmpfs, we need to regen it on reboot
+/usr/bin/logger -s "/etc/local.d/90_eix-update.start: executed"
+/usr/bin/eix-update
+/usr/bin/eix-remote update

@@ -89,6 +89,10 @@ pkg_preinst() {
 		vim/vimrc.local
 		htoprc
 		inputrc
+		portage/postsync.d/eix
+		portage/repo.postsync.d/egencache
+		eixrc/00-eixrc
+		local.d/90_eix-update.start
 	"
 
 	for f in ${filelist}; do

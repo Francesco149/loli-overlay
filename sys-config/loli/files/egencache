@@ -1,0 +1,27 @@
+#!/bin/sh
+
+repository_name=${1}
+sync_uri=${2}
+repository_path=${3}
+
+ret=0
+
+if [ -n "${repository_name}" ]; then
+    # repository name was provided, so we're in a post-repository hook.
+    echo "* in post-repository hook for ${repository_name}"
+    echo "** synced from remote repository ${sync_uri}"
+    echo "** synced into ${repository_path}"
+
+    # gentoo comes with pregenerated cache but the other repositories
+    # usually don't. generate them to improve performance.
+    if [ "${repository_name}" != "gentoo" ]; then
+        if ! egencache --update --repo="${repository_name}" --jobs=13; then
+            echo "!!! egencache failed!"
+            ret=1
+        fi
+    fi
+fi
+
+exit "${ret}"
+
+# vim: set syntax=sh :

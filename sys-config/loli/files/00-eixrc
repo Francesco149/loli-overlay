@@ -1,0 +1,7 @@
+EIX_CACHEFILE=%{EPREFIX}/tmp/eix-portage.eix
+EIX_PREVIOUS=%{EPREFIX}/var/cache/eix/previous.eix
+EIX_REMOTE1=%{EPREFIX}/tmp/eix-remote.eix
+EIX_REMOTE2=%{EPREFIX}/tmp/eix-remote2.eix
+EIX_REMOTEARCHIVE1=%{EPREFIX}/tmp/eix-remote.tar.bz2
+EIX_REMOTEARCHIVE2=%{EPREFIX}/tmp/eix-remote2.tar.bz2
+NOSTATUSLINE=true
