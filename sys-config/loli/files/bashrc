@@ -22,4 +22,11 @@ ehistory() {
 	eix '-I*' --format '<installedversions:DATESORT>' | sort -nr | cut -f2-3
 }
 
+viebuild() {
+	local ebuilddir
+	ebuilddir="$(equery which -m "${1}")"
+	[ $? -eq 0 ] || return $?
+	vim $(dirname $ebuilddir)
+}
+
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
