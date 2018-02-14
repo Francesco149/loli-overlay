@@ -44,6 +44,7 @@ DEPEND="
 	=x11-terms/st-9999
 	x11-misc/xclip
 	x11-misc/clipmenu
+	x11-apps/xrectsel
 	x11-apps/xfontsel
 	x11-misc/gbdfed
 	x11-apps/xprop
