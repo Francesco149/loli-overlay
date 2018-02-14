@@ -1,4 +1,4 @@
-# .shit v1.0.0
+# .shit v1.1.0
 # collection of shell utilities
 
 [ "x$SHIT_SOURCED" != "x" ] && return
@@ -68,6 +68,18 @@ recent() {
         sedexp="${sedexp}${n}p;"
     done
     ls -1At | sed -n "${sedexp-1p;}"
+}
+
+autoname() {
+    local n name basedir
+    n=0
+    basedir="${1-.}"
+    while [ 1 ]; do
+        name="${basedir}/$(date +%F_%H-%M-%S_${n})"
+        [ ! -e "${name}" ] && break
+        n=$(expr "${n}" + 1)
+    done
+    echo "${name}"
 }
 
 # vim: set syntax=sh :
