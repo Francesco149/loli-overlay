@@ -173,7 +173,7 @@ pkg_preinst() {
 	# TODO: make tpm a package
 	dodir /etc/tmux
 	git clone https://github.com/tmux-plugins/tpm \
-		/etc/tmux/plugins/tpm 2>&1 > /dev/null \
+		/etc/tmux/plugins/tpm /dev/null 2>&1 \
 	|| git -C /etc/tmux/plugins/tpm pull \
 	|| die "your /etc/tmux/plugins/tpm directory is broken, delete/move it"
 }
