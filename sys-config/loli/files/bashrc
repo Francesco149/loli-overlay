@@ -12,6 +12,7 @@ BUSYBOX_CMDS="
 	date
 	sort
 	cut
+	time
 "
 for cmd in ${BUSYBOX_CMDS}; do
 	alias ${cmd}="busybox ${cmd}"
