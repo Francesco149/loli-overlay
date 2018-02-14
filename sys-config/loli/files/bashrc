@@ -18,4 +18,8 @@ alias semerge='sudo emerge'
 alias rtorrent='rtorrent -n -o import=/etc/rtorrent.rc'
 alias sxiv='sxiv -r -t'
 
+ehistory() {
+	eix '-I*' --format '<installedversions:DATESORT>' | sort -nr | cut -f2-3
+}
+
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
