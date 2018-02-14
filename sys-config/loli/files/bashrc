@@ -6,7 +6,7 @@ alias realpath='busybox realpath'
 alias ls='busybox ls'
 alias sed='busybox sed'
 alias xargs='busybox xargs'
-alias realpath='busybox realpath'
+alias basename='busybox basename'
 alias rm='busybox rm'
 
 alias sdispatch-conf='sudo dispatch-conf'
