@@ -2,15 +2,20 @@ case "$-" in "*i*") return ;; esac # non-interactive
 
 . "/etc/bash/shit"
 
-alias realpath='busybox realpath'
-alias ls='busybox ls'
-alias sed='busybox sed'
-alias xargs='busybox xargs'
-alias basename='busybox basename'
-alias rm='busybox rm'
-alias date='busybox date'
-alias sort='busybox sort'
-alias cut='busybox cut'
+BUSYBOX_CMDS="
+	realpath
+	ls
+	sed
+	xargs
+	basename
+	rm
+	date
+	sort
+	cut
+"
+for cmd in ${BUSYBOX_CMDS}; do
+	alias ${cmd}="busybox ${cmd}"
+done
 
 alias sdispatch-conf='sudo dispatch-conf'
 alias svim='sudo vim'
