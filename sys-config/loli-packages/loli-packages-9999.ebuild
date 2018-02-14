@@ -11,7 +11,7 @@ SRC_URI=""
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="psd"
 
 # this is in a separate metapackage simply to avoid installing the packages
 # before optimizations are enabled
@@ -21,7 +21,10 @@ DEPEND="
 	sys-apps/lm_sensors
 	sys-apps/busybox
 	sys-process/htop
-	sys-process/dcron
+	psd? (
+		sys-process/dcron
+		=www-misc/profile-sync-daemon-5.75
+	)
 	app-portage/gentoolkit
 	net-misc/curl
 	app-editors/vim
@@ -45,7 +48,6 @@ DEPEND="
 	x11-apps/xrandr
 	x11-apps/xset
 	=www-client/qutebrowser-9999
-	=www-misc/profile-sync-daemon-5.75
 	=net-misc/sharenix-9999
 	app-emulation/qemu
 	games-emulation/xmame
@@ -70,6 +72,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_postinst() {
+	use psd || return
 	einfo "adding and starting services"
 	rc-update add dcron default && rc-service dcron start
 	rc-update add psd default && rc-service psd start
