@@ -49,6 +49,7 @@ DEPEND="
 	x11-apps/xrandr
 	x11-apps/xset
 	=www-client/qutebrowser-9999
+	www-client/w3m
 	=net-misc/sharenix-9999
 	app-emulation/qemu
 	games-emulation/xmame
