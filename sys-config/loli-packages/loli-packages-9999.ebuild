@@ -37,6 +37,7 @@ DEPEND="
 	dev-python/m2crypto
 	dev-python/pip
 	dev-python/requests
+	media-libs/exiftool
 	>=media-libs/mesa-18.0.0_rc3
 	x11-base/xorg-server
 	x11-base/xorg-drivers
