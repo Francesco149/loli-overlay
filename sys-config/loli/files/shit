@@ -1,13 +1,14 @@
-# .shit v1.1.1
+#!/bin/sh
+
+# .shit v1.1.2
 # collection of shell utilities
 
-[ "x$SHIT_SOURCED" != "x" ] && return
+[ "x${SHIT_SOURCED}" != "x" ] && return
 SHIT_SOURCED=1
 
-errcho() { (>&2 echo ${@}) }
+errcho() { (>&2 echo "${@}") }
 
 addpaths() {
-    local d
     for d in "${@}"; do
         [ -e "${d}" ] && export PATH="${PATH}:${d}"
     done
@@ -26,25 +27,24 @@ else
     pushd() {
         [ "x${1}" = "x" ] && return 1
         export SHIT_PUSHD_STACK="${SHIT_PUSHD_STACK}:${PWD}"
-        cd "${1}"
+        cd "${1}" || return 1
     }
 
     popd() {
         [ "x${SHIT_PUSHD_STACK}" = "x" ] && return 1
         [ "x${SHIT_PUSHD_STACK}" = "x:" ] && return 1
-        cd "${SHIT_PUSHD_STACK##*:}"
+        cd "${SHIT_PUSHD_STACK##*:}" || return 1
         export SHIT_PUSHD_STACK="${SHIT_PUSHD_STACK%:*}"
     }
 fi
 
 doin() {
-    local result
-    stfu pushd ${1}
+    stfu pushd "${1}"
     shift
     "${@}"
-    result=$?
+    result=${?}
     stfu popd
-    return $result
+    return ${result}
 }
 
 # run a command and convert newline-separated output to quoted arguments
@@ -63,21 +63,24 @@ toargs() {
 # 4th_latest_file
 #
 recent() {
-    local sedexp
+    unset sedexp
     for n in "${@}"; do
         sedexp="${sedexp}${n}p;"
     done
-    ls -1At | sed -n "${sedexp-1p;}"
+    find . -maxdepth 1 -exec stat -c'%Z:%n' {} + \
+    | sort -r \
+    | cut -d':' -f2- \
+    | sed /^\.$/d \
+    | sed -n "${sedexp-1p;}"
 }
 
 autoname() {
-    local n name basedir
     n=0
     basedir="${1-.}"
-    while [ 1 ]; do
+    while true; do
         name="${basedir}/$(date +%F_%H-%M-%S_${n})"
         [ ! -e "${name}" ] && break
-        n=$(expr "${n}" + 1)
+        n=$((n + 1))
     done
     echo "${name}"
 }
