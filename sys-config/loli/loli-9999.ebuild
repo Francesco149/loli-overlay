@@ -17,7 +17,6 @@ IUSE=""
 
 # required overlays: mv lto-overlay
 
-# TODO: find a nice way to have a system-wide qutebrowser config
 # TODO: ranger config
 # TODO: temps and rpm monitoring
 
