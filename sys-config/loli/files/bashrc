@@ -16,6 +16,7 @@ BUSYBOX_CMDS="
     cut
     time
     expr
+    find
 "
 for cmd in ${BUSYBOX_CMDS}; do
     # shellcheck disable=SC2139,SC2086
