@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case "$-" in "*i*") return ;; esac # non-interactive
+case "${-}" in "*i*") return ;; esac # non-interactive
 
 . "/etc/bash/shit"
 
@@ -85,7 +85,7 @@ for cmd in cast ucast; do
     # shellcheck disable=SC2139
     alias f${cmd}="CAST_VF='scale=1280:720' ${cmd} -s 1920x1080 -i :0.0+1280,0"
     # shellcheck disable=SC2139
-    alias s${cmd}="${cmd} $ffrectsel_eval"
+    alias s${cmd}="${cmd} ${ffrectsel_eval}"
     # shellcheck disable=SC2139
     alias af${cmd}="f${cmd} -f alsa -i loopout"
     # shellcheck disable=SC2139
