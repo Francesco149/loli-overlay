@@ -145,7 +145,7 @@ pkg_preinst() {
 	done
 
 	einfo "eixpaths"
-	$(tc-getCC) ${FILESDIR}/eixpaths.c -o eixpaths || die
+	$(tc-getCC) "${FILESDIR}/eixpaths.c" -o eixpaths || die
 	dobin eixpaths
 
 	fowners root:loli /etc/qemu/bridge.conf
