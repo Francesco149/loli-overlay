@@ -26,6 +26,7 @@ DEPEND="
 		=www-misc/profile-sync-daemon-5.75
 	)
 	app-portage/gentoolkit
+	app-portage/eix
 	net-misc/curl
 	app-editors/vim
 	app-misc/neofetch
