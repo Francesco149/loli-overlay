@@ -25,6 +25,8 @@ alias semerge='sudo emerge'
 alias rtorrent='rtorrent -n -o import=/etc/rtorrent.rc'
 alias sxiv='sxiv -r -t'
 
+# ------------------------------------------------------------------------------
+
 ehistory() {
 	eix '-I*' --format '<installedversions:DATESORT>' | sort -nr | cut -f2-3
 }
@@ -83,5 +85,7 @@ for cmd in cast ucast; do
 	alias af${cmd}="f${cmd} -f alsa -i loopout"
 	alias as${cmd}="s${cmd} -f alsa -i loopout"
 done
+
+# ------------------------------------------------------------------------------
 
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
