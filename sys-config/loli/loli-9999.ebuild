@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit toolchain-funcs
 RESTRICT="strip binchecks"
 PROPERTIES="interactive"
 
@@ -142,6 +143,10 @@ pkg_preinst() {
 	for f in ${filelist}; do
 		install_sym "/etc/${f}"
 	done
+
+	einfo "eixpaths"
+	$(tc-getCC) ${FILESDIR}/eixpaths.c -o eixpaths || die
+	dobin eixpaths
 
 	fowners root:loli /etc/qemu/bridge.conf
 	fperms 640 /etc/qemu/bridge.conf

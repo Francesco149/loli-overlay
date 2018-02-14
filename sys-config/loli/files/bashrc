@@ -30,9 +30,9 @@ ehistory() {
 
 viebuild() {
 	local ebuilddir
-	ebuilddir="$(equery which -m "${1}")"
+	ebuilddir="$(eix "${@}" | eixpaths | peco)"
 	[ $? -eq 0 ] || return $?
-	vim $(dirname $ebuilddir)
+	vim "${ebuilddir}"
 }
 
 addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
