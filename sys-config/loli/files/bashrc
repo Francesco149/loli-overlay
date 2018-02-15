@@ -94,6 +94,7 @@ done
 
 # ------------------------------------------------------------------------------
 
-addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin"
+addpaths "${HOME}/bin" "${HOME}/.local/bin" "${HOME}/go/bin" \
+    "${HOME}/.gem/ruby/2.3.0/bin"
 
 # vim: set expandtab softtabstop=0 listchars=tab\:>~,nbsp\:_,trail\:. list :
