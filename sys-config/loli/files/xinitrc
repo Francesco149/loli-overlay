@@ -18,6 +18,8 @@ xrandr --output DVI-D-1 --primary
 
 killall clipmenud
 clipmenud &
+killall xautolock
+xautolock -time 20 -locker slock &
 
 exec dwm
 
