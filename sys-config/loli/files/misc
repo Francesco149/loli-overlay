@@ -13,3 +13,4 @@ games-emulation/shmupmametgm gtk gnome
 media-video/ffmpeg x265 webp mp3 vpx
 app-emulation/qemu virgl
 www-client/w3m imlib
+media-video/mplayer fbcon
