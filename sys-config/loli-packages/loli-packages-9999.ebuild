@@ -63,6 +63,7 @@ DEPEND="
 	=net-misc/youtube-dl-99999999
 	net-misc/megatools
 	media-video/mpv
+	media-video/mplayer
 	net-im/telegram-desktop
 	media-gfx/fbgrab
 	media-gfx/gimp
