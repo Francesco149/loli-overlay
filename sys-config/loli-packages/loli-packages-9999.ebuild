@@ -3,6 +3,7 @@
 
 EAPI=6
 RESTRICT="strip binchecks"
+inherit multilib multilib-minimal
 
 DESCRIPTION="loli's personal gentoo package config"
 HOMEPAGE="https://github.com/Francesco149/loli-overlay"
@@ -38,7 +39,7 @@ DEPEND="
 	dev-python/pip
 	dev-python/requests
 	media-libs/exiftool
-	>=media-libs/mesa-18.0.0_rc3
+	>=media-libs/mesa-18.0.0_rc3[${MULTILIB_USEDEP}]
 	x11-base/xorg-server
 	x11-base/xorg-drivers
 	x11-wm/dwm
