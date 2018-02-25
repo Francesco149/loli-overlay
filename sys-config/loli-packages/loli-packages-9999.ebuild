@@ -82,6 +82,7 @@ DEPEND="
 	=media-fonts/2xprotamsyn-9999
 "
 RDEPEND="${DEPEND}"
+S="${WORKDIR}" # why do I need this?
 
 pkg_postinst() {
 	use psd || return
