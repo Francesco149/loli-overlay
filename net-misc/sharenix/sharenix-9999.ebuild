@@ -36,6 +36,10 @@ DEPEND="
 	dev-go/xgb
 	dev-go/go-gtk
 "
+if [[ ${PV} != 0.9.7a ]]; then
+	DEPEND+="dev-go/osext"
+fi
+
 RDEPEND=""
 
 src_install() {
