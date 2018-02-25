@@ -21,6 +21,6 @@ clipmenud &
 killall xautolock
 xautolock -time 20 -locker slock &
 
-exec dwm
+exec "${2:-emacs}"
 
 # vim: set syntax=sh :
