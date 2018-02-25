@@ -30,6 +30,8 @@ DEPEND="
 	app-portage/eix
 	net-misc/curl
 	app-editors/vim
+	app-editors/emacs
+	app-emacs/ebuild-mode
 	app-misc/neofetch
 	app-misc/ranger
 	app-misc/tmux
