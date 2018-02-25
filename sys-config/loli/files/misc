@@ -1,5 +1,5 @@
 app-crypt/pinentry -gtk -qt5
-dev-vcs/git -tk -gnome-keyring -emacs -python
+dev-vcs/git -tk -gnome-keyring emacs -python
 media-libs/mesa vulkan
 dev-lang/python pgo sqlite
 sys-devel/gcc graphite pgo
@@ -14,3 +14,4 @@ media-video/ffmpeg x265 webp mp3 vpx
 app-emulation/qemu virgl
 www-client/w3m imlib
 media-video/mplayer fbcon
+app-editors/emacs sound xft games
