@@ -50,7 +50,7 @@ ffrectsel() {
     w=$((w / 2 * 2))                         # round w h to multiples of 2
     h=$((h / 2 * 2))
     coords="$(echo "${rect}" | cut -d'+' -f2- | sed s/\+/,/g)" # x,y
-    echo "|-s ${w}x${h} -i :0.0+${coords}" | sed s/\|//g
+    echo "|-s ${w}x${h} -i ${DISPLAY}+${coords}" | sed s/\|//g
 }
 
 cast() {
