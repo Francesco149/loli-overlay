@@ -64,7 +64,7 @@ cast() {
         -preset "${CAST_PRESET-veryfast}" \
         -tune "${CAST_TUNE-zerolatency}" \
         -pix_fmt "${CAST_PIXFMT-yuv420p}" \
-        -crf "${CAST_CRF-31}" \
+        -crf "${CAST_CRF-23}" \
         -movflags "${CAST_MOVFLAGS-+faststart}" \
         "$(autoname).mp4"
 }
