@@ -29,6 +29,7 @@ alias semerge='sudo emerge'
 alias rtorrent='rtorrent -n -o import=/etc/rtorrent.rc'
 alias sxiv='sxiv -r -t'
 alias reicast='retroarch -L /usr/lib/libretro/reicast_libretro.so'
+alias startx='exec startx'
 
 # ------------------------------------------------------------------------------
 
