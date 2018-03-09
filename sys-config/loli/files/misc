@@ -16,3 +16,4 @@ www-client/w3m imlib
 media-video/mplayer fbcon
 app-editors/emacs sound xft games
 games-emulation/libretro-meta -desmume
+sys-libs/ncurses -gpm
