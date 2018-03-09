@@ -21,6 +21,13 @@ clipmenud &
 killall xautolock
 xautolock -time 20 -locker slock &
 
-exec "${2:-emacs}"
+session="${2:-emacs}"
+
+if [ "$session" = "emacs" ]; then
+   export VISUAL=emacsclient
+   export EDITOR="$VISUAL"
+fi
+
+exec "$session"
 
 # vim: set syntax=sh :
