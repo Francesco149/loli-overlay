@@ -17,3 +17,4 @@ media-video/mplayer fbcon
 app-editors/emacs sound xft games
 games-emulation/libretro-meta -desmume
 sys-libs/ncurses -gpm
+media-gfx/blender python_targets_python3_4
