@@ -1,0 +1,35 @@
+From 2c77a3551b39aa26268630d3b626b811f2cff029 Mon Sep 17 00:00:00 2001
+From: Tilmann Scheller <tschelle@redhat.com>
+Date: Thu, 8 Mar 2018 08:35:29 -0600
+Subject: [PATCH] Partially revert "[CMake] Cleanup unnecessary definition"
+
+This reverts the part of r309021 that broke LLDB SB API header installation.
+
+See rhbz#1548758 for more details.
+---
+ cmake/modules/LLDBConfig.cmake | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/cmake/modules/LLDBConfig.cmake b/cmake/modules/LLDBConfig.cmake
+index 8f75880df..7846ec1bd 100644
+--- a/cmake/modules/LLDBConfig.cmake
++++ b/cmake/modules/LLDBConfig.cmake
+@@ -284,8 +284,6 @@ if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
+     PATTERN ".svn" EXCLUDE
+     PATTERN ".cmake" EXCLUDE
+     PATTERN "Config.h" EXCLUDE
+-    PATTERN "lldb-*.h" EXCLUDE
+-    PATTERN "API/*.h" EXCLUDE
+     )
+
+   install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/
+@@ -295,8 +293,6 @@ if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
+     PATTERN "*.h"
+     PATTERN ".svn" EXCLUDE
+     PATTERN ".cmake" EXCLUDE
+-    PATTERN "lldb-*.h" EXCLUDE
+-    PATTERN "API/*.h" EXCLUDE
+     )
+ endif()
+
+

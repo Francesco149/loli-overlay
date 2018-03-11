@@ -126,6 +126,11 @@ pkg_preinst() {
 	dodir "${dst}"
 	install_sym "${dst}/dwm-scratchpad-20170207-bb3bd6f.patch"
 
+	dst="/etc/portage/patches/dev-util/lldb"
+	dodir "${dst}"
+	install_sym \
+		"${dst}/0001-Partially-revert-CMake-Cleanup-unnecessary-definition.patch"
+
 	einfo
 	einfo "--------------------------------------------------------------------"
 	einfo "misc application configs"
