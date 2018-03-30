@@ -38,7 +38,7 @@ function WideFile()
 endfunction
 
 call NoTabs()
-call Columns(80)
+call Columns(75)
 
 set wildmenu
 set path+=**
