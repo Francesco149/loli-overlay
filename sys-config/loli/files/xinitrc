@@ -21,7 +21,7 @@ clipmenud &
 killall xautolock
 xautolock -time 20 -locker slock &
 
-session="${2:-emacs}"
+session="${2:-dwm}"
 
 if [ "$session" = "emacs" ]; then
    export VISUAL=emacsclient
