@@ -67,7 +67,6 @@ DEPEND="
 	net-misc/megatools
 	media-video/mpv
 	media-video/mplayer
-	net-im/telegram-desktop
 	media-gfx/fbgrab
 	media-gfx/gimp
 	media-gfx/imagemagick
