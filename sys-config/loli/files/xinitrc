@@ -26,6 +26,9 @@ session="${2:-dwm}"
 if [ "$session" = "emacs" ]; then
    export VISUAL=emacsclient
    export EDITOR="$VISUAL"
+else
+   export VISUAL=vim
+   export EDITOR="$VISUAL"
 fi
 
 exec "$session"
