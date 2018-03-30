@@ -10,7 +10,7 @@ dev-python/PyQt5 bluetooth dbus declarative gui network opengl printsupport sql
 dev-python/PyQt5 svg webengine widgets webchannel
 app-i18n/mozc ibus
 games-emulation/shmupmametgm gtk gnome
-media-video/ffmpeg x265 webp mp3 vpx
+media-video/ffmpeg x265 webp mp3 vpx openssl
 app-emulation/qemu virgl
 www-client/w3m imlib
 media-video/mplayer fbcon
