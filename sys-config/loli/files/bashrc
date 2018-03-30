@@ -4,6 +4,8 @@ case "${-}" in "*i*") return ;; esac # non-interactive
 
 . "/etc/bash/shit"
 
+set -o vi
+
 BUSYBOX_CMDS="
     realpath
     ls
