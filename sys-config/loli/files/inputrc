@@ -26,6 +26,8 @@ set input-meta on
 set convert-meta off
 set output-meta on
 set enable-keypad on
+set editing-mode vi
+set keymap vi-command
 
 # Completed names which are symbolic links to
 # directories have a slash appended.
